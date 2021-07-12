@@ -80,3 +80,158 @@ cities = ['new york city', 'mountain view', 'chicago', 'los angeles']
 
 for index in range(len(cities)):
     cities[index] = cities[index].title()
+
+# Quiz: Create Usernames
+# Write a for loop that iterates over the names list to create a usernames list. 
+# To create a username for each name, make everything lowercase and replace spaces with underscores. Running your for loop over the list:
+
+# names = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
+
+# should create the list:
+
+# usernames = ["joey_tribbiani", "monica_geller", "chandler_bing", "phoebe_buffay"]
+
+# HINT: Use the .replace() method to replace the spaces with underscores. 
+
+names = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
+usernames = []
+
+# # write your for loop here
+for name in names:
+    i = name.lower().replace(" ","_")
+    usernames.append(i)
+
+print(usernames)
+#OR
+usernames = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
+
+for i in range(len(usernames)):
+    usernames[i] = usernames[i].lower().replace(" ","_")
+    
+
+print(usernames)
+
+# Quiz: Tag Counter
+# Write a for loop that iterates over a list of strings, tokens, and counts how many of them are XML tags. 
+# XML is a data language similar to HTML. You can tell if a string is an XML tag if it begins with a left angle bracket "<" and ends with a right angle bracket ">". 
+# Keep track of the number of tags using the variable count.
+
+# You can assume that the list of strings will not contain empty strings.
+
+tokens = ['<greeting>', 'Hello World!', '</greeting>']
+count = 0
+
+for i in tokens:
+    if '<' and '>' in i:
+        count+=1
+    else :
+        count=count# write your for loop here
+
+
+print(count)
+
+# Quiz: Create an HTML List
+# Write some code, including a for loop, that iterates over a list of strings and creates a single string, html_str, which is an HTML list. For example, if the list is items = ['first string', 'second string'], printing html_str should output:
+
+# <ul>
+# <li>first string</li>
+# <li>second string</li>
+# </ul>
+# That is, the string's first line should be the opening tag <ul>. Following that is one line per element in the source list, surrounded by <li> and </li> tags. The final line of the string should be the closing tag </ul>.
+
+items = ['first string', 'second string']
+html_str = "<ul>\n"  # "\ n" is the character that marks the end of the line, it does
+                     # the characters that are after it in html_str are on the next line
+for i in items:
+    html_str+='<li>{}</li>\n'.format(i) 
+# write your code here
+html_str+='</ul>'
+print(html_str)
+
+
+# -->Building Dictionaries
+#two important concepts: 1) counting with for loops and 2) the dictionary get method. 
+# These two can actually be combined to create a useful counter dictionary, something you will likely come across again. 
+# For example, we can create a dictionary, word_counter, that keeps track of the total count of each word in a string.
+
+# The following are a couple of ways to do it:
+
+# Method 1: Using a for loop to create a set of counters
+# Let's start with a list containing the words in a series of book titles:
+
+book_title =  ['great', 'expectations','the', 'adventures', 'of', 'sherlock','holmes','the','great','gasby','hamlet','adventures','of','huckleberry','fin']
+# Step 1: Create an empty dictionary.
+
+word_counter = {}
+# Step 2. Iterate through each element in the list. If an element is already included in the dictionary, add 1 to its value. If not, add the element to the dictionary and set its value to 1.
+
+for word in book_title:
+    if word not in word_counter:
+        word_counter[word] = 1
+    else:
+        word_counter[word] += 1
+# What's happening here?
+# The for loop iterates through each element in the list. For the first iteration, word takes the value 'great'.
+# Next, the if statement checks if word is in the word_counter dictionary.
+# Since it doesn't yet, the statement word_counter[word] = 1 adds great as a key to the dictionary with a value of 1.
+# Then, it leaves the if else statement and moves on to the next iteration of the for loop. word now takes the value expectations and repeats the process.
+# When the if condition is not met, it is because thatword already exists in the word_counter dictionary, and the statement word_counter[word] = word_counter[word] + 1 increases the count of that word by 1.
+# Once the for loop finishes iterating through the list, the for loop is complete.
+# We can see the output by printing out the dictionary. Printing word_counter results in the following output.
+
+{'great': 2, 'expectations': 1, 'the': 2, 'adventures': 2, 'of': 2, 'sherlock': 1, 'holmes': 1, 'gasby': 1, 'hamlet': 1, 'huckleberry': 1, 'fin': 1}
+
+# Method 2: Using the get method
+# We will use the same list for this example:
+
+book_title =  ['great', 'expectations','the', 'adventures', 'of', 'sherlock','holmes','the','great','gasby','hamlet','adventures','of','huckleberry','fin']
+# Step 1: Create an empty dictionary.
+word_counter = {}
+# Step 2. Iterate through each element, get() its value in the dictionary, and add 1.
+# the dictionary get method is another way to retrieve the value of a key in a dictionary. 
+# Except unlike indexing, this will return a default value if the key is not found. 
+# If unspecified, this default value is set to None. We can use get with a default value of 0 to simplify the code from the first method above.
+
+for word in book_title:
+    word_counter[word] = word_counter.get(word, 0) + 1
+# What's happening here?
+# The for loop iterates through the list as we saw earlier. The for loop feeds 'great' to the next statement in the body of the for loop.
+# In this line: word_counter[word] = word_counter.get(word,0) + 1, since the key 'great' doesn't yet exist in the dictionary, get() will return the value 0 and word_counter[word] will be set to 1.
+# Once it encounters a word that already exists in word_counter (e.g. the second appearance of 'the'), the value for that key is incremented by 1. On the second appearance of 'the', the key's value would add 1 again, resulting in 2.
+# Once the for loop finishes iterating through the list, the for loop is complete.
+# Printing word_counter shows us we get the same result as we did in method 1.
+
+{'great': 2, 'expectations': 1, 'the': 2, 'adventures': 2, 'of': 2, 'sherlock': 1, 'holmes': 1, 'gasby': 1, 'hamlet': 1, 'huckleberry': 1, 'fin': 1}
+
+# -->Iterating Through Dictionaries with For Loops
+# When you iterate through a dictionary using a for loop, doing it the normal way (for n in some_dict) will only give you access to the keys in the dictionary.
+# If we want to iterate through both the keys and values in the dictionary. Consider this dictionary that uses names of actors as keys and their characters as values.
+
+cast = {
+           "Jerry Seinfeld": "Jerry Seinfeld",
+           "Julia Louis-Dreyfus": "Elaine Benes",
+           "Jason Alexander": "George Costanza",
+           "Michael Richards": "Cosmo Kramer"
+       }
+# Iterating through it in the usual way with a for loop would give you just the keys, as shown below:
+
+for key in cast:
+    print(key)
+# This outputs:
+
+Jerry Seinfeld
+Julia Louis-Dreyfus
+Jason Alexander
+Michael Richards
+# If you wish to iterate through both keys and values, you can use the built-in method items like this:
+
+for key, value in cast.items():
+    print("Actor: {}    Role: {}".format(key, value))
+# This outputs:
+
+Actor: Jerry Seinfeld    Role: Jerry Seinfeld
+Actor: Julia Louis-Dreyfus    Role: Elaine Benes
+Actor: Jason Alexander    Role: George Costanza
+Actor: Michael Richards    Role: Cosmo Kramer
+# items is an awesome method that returns tuples of key, value pairs, which you can use to iterate over dictionaries in for loops.
+
