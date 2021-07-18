@@ -51,3 +51,21 @@ def cylinder_volume(height, radius=5):
 
 cylinder_volume(10, 7)  # pass in arguments by position
 cylinder_volume(height=10, radius=7)  # pass in arguments by name
+
+# --> Quiz: Population Density Function
+# Write a function named population_density that takes two arguments, population and land_area, and returns a population density calculated from those values. 
+def population_density(population,land_area):
+    return population/land_area
+# test cases for your function
+test1 = population_density(10, 1)
+expected_result1 = 10
+print("expected result: {}, actual result: {}".format(expected_result1, test1))
+
+test2 = population_density(864816, 121.4)
+expected_result2 = 7123.6902801
+print("expected result: {}, actual result: {}".format(expected_result2, test2))
+
+# output:
+expected result: 10, actual result: 10.0
+expected result: 7123.6902801, actual result: 7123.690280065897
+        
