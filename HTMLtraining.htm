@@ -221,4 +221,189 @@ Formatting elements were designed to display special types of text:
 <sup> - Superscript text-Superscript text appears half a character above the normal line, and is sometimes rendered in a smaller font. Superscript text can be used for footnotes, like WWW-->
   
 
+<!--HTML colors are specified with predefined color names, or with RGB, HEX, HSL, RGBA, or HSLA values.-->
+<h1 style="background-color:DodgerBlue;">Hello World</h1>
+<p style="background-color:Tomato;">Lorem ipsum...</p>
 
+<!--You can set the color of text:-->
+<h1 style="color:Tomato;">Hello World</h1>
+<p style="color:DodgerBlue;">Lorem ipsum...</p>
+<p style="color:MediumSeaGreen;">Ut wisi enim...</p>
+
+<!--You can set the color of borders:-->
+<h1 style="border:2px solid Tomato;">Hello World</h1>
+<h1 style="border:2px solid DodgerBlue;">Hello World</h1>
+<h1 style="border:2px solid Violet;">Hello World</h1>
+ 
+<!--HTML Links - The target Attribute
+By default, the linked page will be displayed in the current browser window. To change this, you must specify another target for the link.
+
+The target attribute specifies where to open the linked document.
+
+The target attribute can have one of the following values:
+
+_self - Default. Opens the document in the same window/tab as it was clicked
+_blank - Opens the document in a new window or tab
+_parent - Opens the document in the parent frame
+_top - Opens the document in the full body of the window-->
+ 
+<a href="https://www.w3schools.com/" target="_blank">Visit W3Schools!</a>
+
+<!--Link to an Email Address
+Use mailto: inside the href attribute to create a link that opens the user's email program (to let them send a new email)-->
+<a href="mailto:someone@example.com">Send email</a>
+
+ <!--To use an HTML button as a link, you have to add some JavaScript code.
+JavaScript allows you to specify what happens at certain events, such as a click of a button:-->
+<button onclick="document.location='default.asp'">HTML Tutorial</button>
+
+ <!--The title attribute specifies extra information about an element. The information is most often shown as a tooltip text when the mouse moves over the element.-->
+ <a href="https://www.w3schools.com/html/" title="Go to W3Schools HTML section">Visit our HTML Tutorial</a>
+
+ <!--Create a Bookmark in HTML
+Bookmarks can be useful if a web page is very long.
+To create a bookmark - first create the bookmark, then add a link to it.
+When the link is clicked, the page will scroll down or up to the location with the bookmark.-->
+<h2 id="C4">Chapter 4</h2>
+
+<!--HTML images-Images can improve the design and the appearance of a web page.
+The required alt attribute provides an alternate text for an image, if the user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader).
+You can use the style attribute to specify the width and height of an image.
+The width, height, and style attributes are all valid in HTML.
+However, we suggest using the style attribute. It prevents styles sheets from changing the size of images-->
+
+ <img src="pic_trulli.jpg" alt="Italian Trulli">
+ <img src="img_girl.jpg" alt="Girl in a jacket" style="width:500px;height:600px;">
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+img {
+  width: 100%;
+}
+</style>
+</head>
+<body>
+
+<img src="html5.gif" alt="HTML5 Icon" width="128" height="128">
+
+<img src="html5.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
+
+</body>
+</html>
+ 
+ <!--If you have your images in a sub-folder, you must include the folder name in the src attribute:-->
+ <img src="/images/html5.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
+
+ <!--Some web sites point to an image on another server.
+To point to an image on another server, you must specify an absolute (full) URL in the src attribute.-->
+<img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com">
+
+<!--HTML tables allow web developers to arrange data into rows and columns.
+The <table> tag defines an HTML table.
+Each table row is defined with a <tr> tag. Each table header is defined with a <th> tag. Each table data/cell is defined with a <td> tag.
+By default, the text in <th> elements are bold and centered.
+By default, the text in <td> elements are regular and left-aligned.-->
+ 
+<table style="width:100%">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>
+</table>
+ 
+<!--To add a border to a table, use the CSS border property:-->
+
+ table, th, td {
+  border: 1px solid black;
+} 
+
+<!--To let the borders collapse into one border, add the CSS border-collapse property:-->
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+<!--Cell padding specifies the space between the cell content and its borders.
+If you do not specify a padding, the table cells will be displayed without padding.
+To set the padding, use the CSS padding property: -->
+th, td {
+  padding: 15px;
+}
+
+<!--By default, table headings are bold and centered.
+To left-align the table headings, use the CSS text-align property -->
+th {
+  text-align: left;
+}
+
+<!--Border spacing specifies the space between the cells.
+To set the border spacing for a table, use the CSS border-spacing property--> 
+table {
+  border-spacing: 5px;
+}
+
+ 
+<!--To make a cell span more than one column, use the colspan attribute:-->
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th colspan="2">Telephone</th>
+  </tr>
+  <tr>
+    <td>Bill Gates</td>
+    <td>55577854</td>
+    <td>55577855</td>
+  </tr>
+</table>
+ 
+<!--To add a caption to a table, use the <caption> tag.-->
+ 
+<!--To define a special style for one particular table, add an id attribute to the table:-->
+
+Example
+<table id="t01">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>
+</table>
+<!--Now you can define a special style for this table:-->
+#t01 {
+  width: 100%;
+  background-color: #f1f1c1;
+}
+ 
+ <!--Html forms-
+The HTML <form> element is used to create an HTML form for user input.
+<form>
+.
+form elements
+.
+</form>
+The <form> element is a container for different types of input elements, such as: text fields, checkboxes, radio buttons, submit buttons, etc.
+<input type="text">	Displays a single-line text input field
+<input type="radio">	Displays a radio button (for selecting one of many choices)
+<input type="checkbox">	Displays a checkbox (for selecting zero or more of many choices)
+<input type="submit">	Displays a submit button (for submitting the form)
+<input type="button">	Displays a clickable button-->
