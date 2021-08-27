@@ -122,4 +122,74 @@ if __name__ =='__main__':
 # 5	DELETE	It is used to delete all the current representation of the target resource specified in the URL.
 # We can specify which HTTP method to be used to handle the requests in the route() function of the Flask class. By default, the requests are handled by the GET() method.
 
+# post example
+login.html
+
+<html>  
+   <body>  
+      <form action = "http://localhost:5000/login" method = "post">  
+         <table>  
+        <tr><td>Name</td>  
+        <td><input type ="text" name ="uname"></td></tr>  
+        <tr><td>Password</td>  
+        <td><input type ="password" name ="pass"></td></tr>  
+        <tr><td><input type = "submit"></td></tr>  
+    </table>  
+      </form>  
+   </body>  
+</html>  
+Now, Enter the following code into the script named post_example.py.
+
+# post_example.py
+
+from flask import *  
+app = Flask(__name__)  
+  
+@app.route('/login',methods = ['POST'])  
+def login():  
+      uname=request.form['uname']  
+      passwrd=request.form['pass']  
+      if uname=="ayush" and passwrd=="google":  
+          return "Welcome %s" %uname  
+   
+if __name__ == '__main__':  
+   app.run(debug = True)  
+
+# get eg
+# login.html
+<html>  
+   <body>  
+      <form action = "http://localhost:5000/login" method = "get">  
+         <table>  
+        <tr><td>Name</td>  
+        <td><input type ="text" name ="uname"></td></tr>  
+        <tr><td>Password</td>  
+        <td><input type ="password" name ="pass"></td></tr>  
+        <tr><td><input type = "submit"></td></tr>  
+    </table>  
+      </form>  
+   </body>  
+</html>  
+Now, create the following python script as get_example.py.
+
+# get_example.py
+
+from flask import *  
+app = Flask(__name__)  
+  
+  
+@app.route('/login',methods = ['GET'])  
+def login():  
+      uname=request.args.get('uname')  
+      passwrd=request.args.get('pass')  
+      if uname=="ayush" and passwrd=="google":  
+          return "Welcome %s" %uname  
+   
+if __name__ == '__main__':  
+   app.run(debug = True)  
+    
+The data is obtained by using the following line of code.
+
+# uname = request.args.get('uname')  
+# Here, the args is a dictionary object which contains the list of pairs of form parameter and its corresponding value.
 
