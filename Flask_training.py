@@ -82,4 +82,44 @@ app.add_url_rule("/about","about",about)
 if __name__ =="__main__":  
     app.run(debug = True)  
     
-# 
+#The url_for() function is used to build a URL to the specific function dynamically. The first argument is the name of the specified function, and then we can pass any number of keyword argument corresponding to the variable part of the URL.
+
+# This function is useful in the sense that we can avoid hard-coding the URLs into the templates by dynamically building them using this function.
+
+from flask import *  
+   
+app = Flask(__name__)  
+  
+@app.route('/admin')  
+def admin():  
+    return 'admin'  
+  
+@app.route('/librarion')  
+def librarion():  
+    return 'librarion'  
+  
+@app.route('/student')  
+def student():  
+    return 'student'  
+  
+@app.route('/user/<name>')  
+def user(name):  
+    if name == 'admin':  
+        return redirect(url_for('admin'))  
+    if name == 'librarion':  
+        return redirect(url_for('librarion'))  
+    if name == 'student':  
+        return redirect(url_for('student'))  
+if __name__ =='__main__':  
+    app.run(debug = True)  
+    
+# HTTP is the hypertext transfer protocol which is considered as the foundation of the data transfer in the world wide web. All web frameworks including flask need to provide several HTTP methods for data communication.
+
+# 1	GET	It is the most common method which can be used to send data in the unencrypted form to the server.
+# 2	HEAD	It is similar to the GET but used without the response body.
+# 3	POST	It is used to send the form data to the server. The server does not cache the data transmitted using the post method.
+# 4	PUT	It is used to replace all the current representation of the target resource with the uploaded content.
+# 5	DELETE	It is used to delete all the current representation of the target resource specified in the URL.
+# We can specify which HTTP method to be used to handle the requests in the route() function of the Flask class. By default, the requests are handled by the GET() method.
+
+
