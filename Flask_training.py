@@ -39,3 +39,47 @@ app.run(host, port, debug, options)
 # 3	debug	The default is false. It provides debug information if it is set to true.
 # 4	options	It contains the information to be forwarded to the server.
 
+# Flask facilitates us to add the variable part to the URL by using the section. We can reuse the variable by adding that as a parameter into the view function.
+from flask import Flask  
+app = Flask(__name__)  
+ 
+@app.route('/home/<name>')  
+def home(name):  
+    return "hello,"+name;  
+  
+if __name__ =="__main__":  
+    app.run(debug = True)  
+    
+# The converter can also be used in the URL to map the specified variable to the particular data type. For example, we can provide the integers or float like age or salary respectively.
+# The following converters are used to convert the default string type to the associated data type.
+
+# string: default
+# int: used to convert the string to the integer
+# float: used to convert the string to the float.
+# path: It can accept the slashes given in the URL.
+
+from flask import Flask  
+app = Flask(__name__)  
+ 
+@app.route('/home/<int:age>')  
+def home(age):  
+    return "Age = %d"%age;  
+  
+if __name__ =="__main__":  
+    app.run(debug = True) 
+    
+# add_url_rule(<url rule>, <endpoint>, <view function>)  
+# This function is mainly used in the case if the view function is not given and we need to connect a view function to an endpoint externally by using this function.
+
+from flask import Flask  
+app = Flask(__name__)  
+  
+def about():  
+    return "This is about page";  
+  
+app.add_url_rule("/about","about",about)  
+  
+if __name__ =="__main__":  
+    app.run(debug = True)  
+    
+# 
